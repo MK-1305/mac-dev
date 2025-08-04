@@ -1,0 +1,113 @@
+{{ 'c_parallax.css' | asset_url | stylesheet_tag }}
+
+{% comment %} 下記で親要素にstyleを当てることができる {% endcomment %}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    display: contents;
+  }
+{% endstyle %}
+
+{% comment %} imageがなければそもそもオーバーレイも表示させないのでandで記述 {% endcomment %}
+{% if section.settings.image != blank and section.settings.image_overlay != blank %}
+  <div class="c_parallax__overlay">
+    <div class="c_parallax__image c_parallax-overlay__image">
+      <picture>
+        {% if section.settings.image_overlay_sp != blank %}
+          <source srcset="{{ section.settings.image_overlay_sp | image_url: width: 800 }}" media="(max-width: 750px)">
+          <img
+            class="c_image"
+            src="{{ section.settings.image_overlay | image_url: width: 3840 }}"
+            width="1920"
+            height="800"
+            alt="{{ section.settings.image_overlay.alt }}">
+        {% endif %}
+      </picture>
+    </div>
+  </div>
+{% endif %}
+
+{% comment %} メインとなる画像（そもそもこれがblankなら他も表示されない）{% endcomment %}
+{% if section.settings.image != blank %}
+  <div class="c_parallax-section">
+    <div class="c_parallax__wrapper">
+      <div class="c_parallax__image">
+        <picture>
+          {% if section.settings.image_sp != blank %}
+            <img
+              class="c_image"
+              src="{{ section.settings.image | image_url: width: 3840 }}"
+              width="1920"
+              height="800"
+              alt="{{ section.settings.image.alt }}">
+          {% endif %}
+        </picture>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% comment %} 装飾画像とテキスト {% endcomment %}
+{% if section.settings.image != blank %}
+  <div class="c_parallax__image c_parallax__decoration">
+    {% if section.settings.image_decoration != blank %}
+      <div class="c_parallax__decoration__inner">
+        <div class="c_parallax__decoration-image">
+          <img
+            class="c_image"
+            src="{{ section.settings.image_decoration | image_url: width: 800 }}"
+            width="230"
+            height="230"
+            alt="{{ section.settings.image_decoration.alt }}">
+        </div>
+        {% if section.settings.textarea != blank %}
+          <div class="c_parallax__decoration-text">
+            {{ section.settings.textarea | newline_to_br }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "カスタムパララックス",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "画像(PC)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_sp",
+        "label": "画像(SP)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_overlay",
+        "label": "オーバーレイ(PC)"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_overlay_sp",
+        "label": "オーバーレイ(SP)"
+      }, {
+        "type": "image_picker",
+        "id": "image_decoration",
+        "label": "装飾"
+      }, {
+        "type": "textarea",
+        "id": "textarea",
+        "label": "テキスト",
+        "default": "ここにテキストを入力"
+      }
+    ],
+    "presets": [
+      {
+        "name": "カスタムパララックス",
+        "category": "カスタム"
+      }
+    ]
+  }
+{% endschema %}
