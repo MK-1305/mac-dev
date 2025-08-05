@@ -21,6 +21,80 @@
         "textarea": "Daily, indulge in a soothing lather"
       }
     },
+    "c_pick_up_BEypd9": {
+      "type": "c_pick-up",
+      "blocks": {
+        "image_KLt6nq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/img_2d41df1c-406f-4faa-bc88-3a306142ec8a.png",
+            "image_sp": "shopify://shop_images/banner.png",
+            "url": "shopify://pages/contact"
+          }
+        },
+        "image_6w9xAM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/pick-up-2.png",
+            "image_sp": "shopify://shop_images/banner-1.png",
+            "url": ""
+          }
+        },
+        "image_6MTrMK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/pick-up-3.png",
+            "image_sp": "shopify://shop_images/banner-2.png",
+            "url": ""
+          }
+        },
+        "image_tEczQY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/pick-up-4.png",
+            "image_sp": "shopify://shop_images/banner-3.png",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_KLt6nq",
+        "image_6w9xAM",
+        "image_6MTrMK",
+        "image_tEczQY"
+      ],
+      "name": "カスタムピックアップ",
+      "settings": {
+        "title_sub": "ピックアップ商品＆キャンペーン情報",
+        "title": "Pickup&campaign",
+        "padding_top": 96,
+        "padding_bottom": 146,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "c_featured_collection_RPqeAh": {
+      "type": "c_featured-collection",
+      "name": "カスタム特集コレクション",
+      "settings": {
+        "title_sub": "新商品から探す",
+        "title": "New arrival",
+        "collection": "hand-body",
+        "products_to_show": 5,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": ""
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -52,6 +126,8 @@
   },
   "order": [
     "c_parallax_wpXcU3",
+    "c_pick_up_BEypd9",
+    "c_featured_collection_RPqeAh",
     "featured_collection"
   ]
 }
