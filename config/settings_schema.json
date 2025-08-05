@@ -33,7 +33,7 @@
         "step": 2,
         "default": 100,
         "unit": "px",
-        "label": "幅(SP)"
+        "label": "t:settings_schema.logo.settings.logo_width.label"
       },
       {
         "type": "image_picker",
