@@ -11,12 +11,13 @@
 
 .c_parallax-overlay__image {
   position: absolute;
-  inset: 0;
+  /* inset: 0; */
 }
 
 .c_parallax-section {
   position: sticky;
   top: calc(var(--header-height, 0px));
+  z-index: -1;
 }
 
 .c_parallax__wrapper {
