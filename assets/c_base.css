@@ -50,3 +50,15 @@
     font-size: 38px;
   }
 }
+
+/* 商品カード */
+
+/* ラベル */
+.c_card__label-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
