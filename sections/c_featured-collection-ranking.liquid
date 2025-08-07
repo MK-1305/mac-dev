@@ -56,33 +56,51 @@
         , title_sub: section.settings.title_sub %}
     </div>
 
-    <ul class="splide__list">
-      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-        <li
-          class="splide__slide"
-          {{ block.shopify_attributes }}
-          data-block-id="{{block.id}}"
-          data-block-index="{{ forloop.index0 }}">
-          {% render 'c_card-product'
-            , card_product: product
-            , media_aspect_ratio: section.settings.image_ratio
-            , image_shape: section.settings.image_shape
-            , show_secondary_image: section.settings.show_secondary_image
-            , show_vendor: section.settings.show_vendor
-            , show_rating: section.settings.show_rating
-            , skip_styles: skip_card_product_styles
-            , section_id: section.id
-            , quick_add: section.settings.quick_add
-          %}</li>
-        {%- assign skip_card_product_styles = true -%}
+    <nav class="c_tabs-nav c_featured-collection__nav">
+      <ul class="c_tabs-list">
+        {% for block in section.blocks %}
+          {% if block.settings.title_sub != blank %}
+            <li class="c_tab-item">
+              <button>
+                <span class="c_tab-title">{{ block.settings.title }}</span>
+                {% if block.settings.title_sub != blank %}
+                  <span class="c_tab-subtitle">{{ block.settings.title_sub }}</span>
+                {% endif %}
+              </button>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="c_tabs-content c_featured-collection__content">
+      {% for block in section.blocks %}
+        <ul class="c_tab-panel c-featured-collection__list">
+          {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
+            <li class="c_featured-collection__item">
+              {% render 'c_card-product'
+                , card_product: product
+                , media_aspect_ratio: section.settings.image_ratio
+                , image_shape: section.settings.image_shape
+                , show_secondary_image: section.settings.show_secondary_image
+                , show_vendor: section.settings.show_vendor
+                , show_rating: section.settings.show_rating
+                , skip_styles: skip_card_product_styles
+                , section_id: section.id
+                , quick_add: section.settings.quick_add
+              %}</li>
+            {%- assign skip_card_product_styles = true -%}
+          {% endfor %}
+        </ul>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </div>
 
 {% schema %}
   {
     "name": "カスタム特集コレクション（ランキング）",
+    "max_blocks": 3,
     "settings": [
       {
         "type": "text",
@@ -97,11 +115,6 @@
         "default": "見出し"
       },
       {
-        "type": "collection",
-        "id": "collection",
-        "label": "t:sections.featured-collection.settings.collection.label"
-      },
-      {
         "type": "range",
         "id": "products_to_show",
         "min": 2,
@@ -109,7 +122,8 @@
         "step": 1,
         "default": 4,
         "label": "t:sections.featured-collection.settings.products_to_show.label"
-      }, {
+      },
+      {
         "type": "header",
         "content": "t:sections.featured-collection.settings.header.content"
       }, {
@@ -244,6 +258,29 @@
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "コレクション",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "t:sections.featured-collection.settings.collection.label"
+          }, {
+            "type": "text",
+            "id": "title_sub",
+            "label": "サブ見出し",
+            "default": "サブ見出し"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "見出し",
+            "default": "見出し"
+          }
+        ]
       }
     ],
     "presets": [
