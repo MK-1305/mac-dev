@@ -40,7 +40,7 @@
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper underline-links-hover c_card-wrapper">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -311,7 +311,7 @@
             {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
         {% if quick_add == 'none' %}
           <span class="c_card__price-link">
-          {{ custom.product.detail | t }}
+          {{ 'custom.product.detail' | t }}
           {% comment %} SVG貼り付ける {% endcomment %}
           </span>
         {% elsif quick_add == 'standard' %}

@@ -83,7 +83,7 @@
         {%- else -%}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
           <span class="price-item price-item--regular">
-            {{ money_price }}<span class="c_price__tax">{{ custom.product.tax | t }}</span>
+            {{ money_price }}<span class="c_price__tax">{{ 'custom.product.tax' | t }}</span>
           </span>
         {%- endif -%}
       </div>
@@ -102,7 +102,7 @@
         {%- endunless -%}
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
         <span class="price-item price-item--sale price-item--last">
-          {{ money_price }}<span class="c_price__tax">{{ custom.product.tax | t }}</span>
+          {{ money_price }}<span class="c_price__tax">{{ 'custom.product.tax' | t }}</span>
         </span>
       </div>
       <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
