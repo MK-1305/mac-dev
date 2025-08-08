@@ -222,3 +222,19 @@
     letter-spacing: 0.48px;
   }
 }
+/* ランキング */
+.c_card__price--ranking {
+  --color-foreground: 40, 35, 21!important;
+  background: transparent;
+}
+@media screen and (max-width: 990px) {
+  .c_card__price--ranking {
+    padding: 0;
+    padding-left: 4px;
+  }
+
+  .c_card__price--ranking .price {
+    font-size: 16px;
+  letter-spacing: 0.64px;
+  }
+}
