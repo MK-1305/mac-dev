@@ -1,2 +1,24 @@
-<p class="c_section-sub-title">{{ title_sub }}</p>
+<p class="c_section-sub-title">
+  {% unless vertical %}
+    <svg
+      width="10"
+      height="12"
+      viewBox="0 0 10 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.93031 5.86469C8.55031 4.80469 5.07031 0.904688 5.00031 0.804688C4.95031 0.904688 1.68031 4.54469 0.0703125 5.86469C1.58031 7.09469 4.71031 10.5447 5.00031 11.1947C5.29031 10.5447 8.43031 7.02469 9.93031 5.86469Z" fill="#A38B51" />
+    </svg>
+  {% endunless %}
+  {{ title_sub }}
+</p>
 <h2 class="c_section-title">{{ title }}</h2>
+{% if vertical %}
+  <svg
+    width="10"
+    height="12"
+    viewBox="0 0 10 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.93031 5.86469C8.55031 4.80469 5.07031 0.904688 5.00031 0.804688C4.95031 0.904688 1.68031 4.54469 0.0703125 5.86469C1.58031 7.09469 4.71031 10.5447 5.00031 11.1947C5.29031 10.5447 8.43031 7.02469 9.93031 5.86469Z" fill="#A38B51" />
+  </svg>
+{% endif %}
