@@ -101,25 +101,25 @@
         "collection_97xEjL": {
           "type": "collection",
           "settings": {
-            "collection": "hand-body",
             "title_sub": "{{ block.settings.collection.title }}",
-            "title": "{{ block.settings.collection.metafields.custom.title_sub.value }}"
+            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}",
+            "collection": "hand-body"
           }
         },
         "collection_9CnYkf": {
           "type": "collection",
           "settings": {
-            "collection": "hair-care",
             "title_sub": "{{ block.settings.collection.title }}",
-            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}"
+            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}",
+            "collection": "hair-care"
           }
         },
         "collection_xG3a8q": {
           "type": "collection",
           "settings": {
-            "collection": "skin-care",
             "title_sub": "{{ block.settings.collection.title }}",
-            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}"
+            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}",
+            "collection": "skin-care"
           }
         }
       },
