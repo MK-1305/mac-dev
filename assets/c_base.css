@@ -7,11 +7,40 @@
   font-family: var(--font-bodoniModa-family);
 }
 
+body {
+  letter-spacing: 0;
+}
+
 .c_image {
   width: 100%;
   height: auto;
   vertical-align: bottom;
 }
+
+.is-pc {
+  display: block!important;
+}
+.is-sp {
+  display: none!important;
+}
+
+@media screen and (max-width: 750px) {
+  .is-pc {
+    display: none!important;
+  }
+  .is-sp {
+    display: block!important;
+  }
+}
+
+.page-width {
+  padding-inline: 20px;
+}
+/* @media screen and (max-width: 750px) {
+  .page-width {
+    padding-inline: 3rem;
+  }
+} */
 
 /* セクションタイトル */
 .c_section-head {
