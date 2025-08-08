@@ -75,7 +75,7 @@
 
     <div class="c_tabs-content c_featured-collection__content">
       {% for block in section.blocks %}
-        <ul class="c_tab-panel c-featured-collection__list">
+        <ul class="c_tab-panel c_featured-collection__list">
           {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
             <li class="c_featured-collection__item">
               {% render 'c_card-product'
@@ -88,6 +88,8 @@
                 , skip_styles: skip_card_product_styles
                 , section_id: section.id
                 , quick_add: section.settings.quick_add
+                , ranking: section.settings.ranking
+                , index: forloop.index
               %}</li>
             {%- assign skip_card_product_styles = true -%}
           {% endfor %}
@@ -211,6 +213,11 @@
             "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
           }
         ]
+      }, {
+        "type": "checkbox",
+        "id": "ranking",
+        "label": "ランキング",
+        "default": true
       }, {
         "type": "header",
         "content": "デスクトップ"

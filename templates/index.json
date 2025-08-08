@@ -95,32 +95,56 @@
         "color_scheme": "scheme-ba529579-9733-4844-bb3b-564a36d71821"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "c_featured_collection_ranking_pJ4GGG": {
+      "type": "c_featured-collection-ranking",
+      "blocks": {
+        "collection_97xEjL": {
+          "type": "collection",
+          "settings": {
+            "collection": "hand-body",
+            "title_sub": "{{ block.settings.collection.title }}",
+            "title": "{{ block.settings.collection.metafields.custom.title_sub.value }}"
+          }
+        },
+        "collection_9CnYkf": {
+          "type": "collection",
+          "settings": {
+            "collection": "hair-care",
+            "title_sub": "{{ block.settings.collection.title }}",
+            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}"
+          }
+        },
+        "collection_xG3a8q": {
+          "type": "collection",
+          "settings": {
+            "collection": "skin-care",
+            "title_sub": "{{ block.settings.collection.title }}",
+            "title": "#{{ block.settings.collection.metafields.custom.title_sub.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "collection_97xEjL",
+        "collection_9CnYkf",
+        "collection_xG3a8q"
+      ],
+      "name": "カスタム特集コレクション（ランキング）",
       "settings": {
-        "collection": "all",
+        "title_sub": "ランキングから探す",
+        "title": "Ranking",
         "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "quick_add": "standard",
+        "ranking": true,
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": ""
       }
     }
   },
@@ -128,6 +152,6 @@
     "c_parallax_wpXcU3",
     "c_pick_up_BEypd9",
     "c_featured_collection_RPqeAh",
-    "featured_collection"
+    "c_featured_collection_ranking_pJ4GGG"
   ]
 }
