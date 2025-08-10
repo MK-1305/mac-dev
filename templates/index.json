@@ -194,22 +194,37 @@
         "color_scheme": "scheme-1"
       }
     },
-    "featured_blog_yxnAzf": {
-      "type": "featured-blog",
-      "name": "t:sections.featured-blog.presets.name",
+    "c_news_AgQxxa": {
+      "type": "c_news",
+      "name": "カスタム:ニュース",
       "settings": {
+        "title_sub": "お知らせ",
+        "title": "NEWS",
+        "blog": "news",
+        "limit": 3,
+        "button_text": "すべてを見る",
+        "image": "shopify://shop_images/gif_img_45cfbd39-8cf2-4f19-a5ad-637b84b58cd1.png",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": ""
+      }
+    },
+    "c_featured_blog_36dTDe": {
+      "type": "c_featured-blog",
+      "name": "カスタム:ブログ記事",
+      "settings": {
+        "title_sub": "店舗情報",
+        "title": "Shop",
         "blog": "shop",
-        "post_limit": 3,
-        "heading": "ブログ記事",
-        "heading_size": "h1",
-        "columns_desktop": 3,
-        "show_view_all": true,
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "limit": 3,
+        "button_text": "全てを見る",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": "scheme-ba529579-9733-4844-bb3b-564a36d71821"
       }
     }
   },
@@ -221,6 +236,7 @@
     "c_parallax_LhK6V9",
     "c_featured_collection_RCEQdP",
     "c_concept_3AQAhw",
-    "featured_blog_yxnAzf"
+    "c_news_AgQxxa",
+    "c_featured_blog_36dTDe"
   ]
 }
