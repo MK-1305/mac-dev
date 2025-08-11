@@ -35,6 +35,10 @@
               <div class="c_featured-blog__item-info">
                 <h3 class="c_featured__item-title">{{ article.title }}</h3>
 
+                {% if section.settings.date_show %}
+                  <span class="c_featured-blog__item-date">{{ article.published_at | date: '%Y, %m, %d' }}</span>
+                {% endif %}
+
                 {% if article.metafields.custom.address != blank %}
                   <div class="c_featured-blog__shop-info">
                     {{ article.metafields.custom.address |  newline_to_br }}
@@ -88,6 +92,12 @@
         "max": 10,
         "step": 1,
         "default": 3
+      },
+      {
+        "type": "checkbox",
+        "id": "date_show",
+        "label": "日付を表示する",
+        "default": false
       },
       {
         "type": "text",
