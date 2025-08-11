@@ -219,12 +219,30 @@
         "title": "Shop",
         "blog": "shop",
         "limit": 3,
+        "date_show": false,
         "button_text": "全てを見る",
         "padding_top": 96,
         "padding_bottom": 96,
         "padding_top_sp": 64,
         "padding_bottom_sp": 64,
         "color_scheme": "scheme-ba529579-9733-4844-bb3b-564a36d71821"
+      }
+    },
+    "c_featured_blog_cBxE77": {
+      "type": "c_featured-blog",
+      "name": "カスタム:ブログ記事",
+      "settings": {
+        "title_sub": "コラム",
+        "title": "Column",
+        "blog": "column",
+        "limit": 4,
+        "date_show": true,
+        "button_text": "全てを見る",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": "scheme-1"
       }
     }
   },
@@ -237,6 +255,7 @@
     "c_featured_collection_RCEQdP",
     "c_concept_3AQAhw",
     "c_news_AgQxxa",
-    "c_featured_blog_36dTDe"
+    "c_featured_blog_36dTDe",
+    "c_featured_blog_cBxE77"
   ]
 }
