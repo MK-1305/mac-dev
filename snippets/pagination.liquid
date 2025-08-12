@@ -3,7 +3,7 @@
 
   Usage:
   {% paginate results by 2 %}
-    {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+  {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
   {% endpaginate %}
 
   Accepts:
@@ -15,17 +15,31 @@
 
 {%- if paginate.parts.size > 0 -%}
   <div class="pagination-wrapper" data-page="{{ paginate.current_page }}">
-    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+    <nav
+      class="pagination"
+      role="navigation"
+      aria-label="{{ 'general.pagination.label' | t }}">
       <ul class="pagination__list list-unstyled" role="list">
         {%- if paginate.previous -%}
           <li>
             <a
               href="{{ paginate.previous.url }}{{ anchor }}"
               class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
-              aria-label="{{ 'general.pagination.previous' | t }}"
-            >
-              <span class="svg-wrapper">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+              aria-label="{{ 'general.pagination.previous' | t }}">
+              <span class="c_pagination-arrow">
+                <svg
+                  width="26"
+                  height="32"
+                  viewBox="0 0 26 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13 10.4761L18.5239 16L13 21.5239"
+                    stroke="#9C9792"
+                    stroke-width="0.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
               </span>
             </a>
           </li>
@@ -37,8 +51,7 @@
               <a
                 href="{{ part.url }}{{ anchor }}"
                 class="pagination__item link"
-                aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
-              >
+                aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
                 {{- part.title -}}
               </a>
             {%- else -%}
@@ -48,8 +61,7 @@
                   aria-disabled="true"
                   class="pagination__item pagination__item--current light"
                   aria-current="page"
-                  aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
-                >
+                  aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
                   {{- part.title -}}
                 </a>
               {%- else -%}
@@ -64,10 +76,21 @@
             <a
               href="{{ paginate.next.url }}{{ anchor }}"
               class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
-              aria-label="{{ 'general.pagination.next' | t }}"
-            >
-              <span class="svg-wrapper">
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+              aria-label="{{ 'general.pagination.next' | t }}">
+              <span class="c_pagination-arrow">
+                <svg
+                  width="26"
+                  height="32"
+                  viewBox="0 0 26 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13 10.4761L18.5239 16L13 21.5239"
+                    stroke="#9C9792"
+                    stroke-width="0.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
               </span>
             </a>
           </li>
