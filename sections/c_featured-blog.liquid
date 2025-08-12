@@ -15,25 +15,29 @@
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
-  <div class="c_featured page-width">
-    <div class="c_section-head c_featured__head">
+  <div class="c_featured-blog page-width">
+    <div class="c_section-head c_featured-blog__head">
       {% render 'c_section-title'
         , title: section.settings.title
         , title_sub: section.settings.title_sub
       %}
     </div>
-    <div class="c_featured__content">
-      <ul class="c_featured__list">
+    <div class="c_featured-blog__content">
+      <ul class="c_featured-blog__list">
         {% for article in section.settings.blog.articles limit: section.settings.limit %}
-          <li class="c_featured__item">
-            <a href="{{ article.url }}" class="c_featured__item-link">
+          <li class="c_featured-blog__item">
+            <a href="{{ article.url }}" class="c_featured-blog__item-link">
               <div class="c_featured-blog__item-image">
                 {% if article.image != blank %}
-                  <img src="{{ article.image |  image_url: width: 540 }}" alt="{{ article.image.alt }}" width="270" height="270">
+                  <img
+                    src="{{ article.image |  image_url: width: 540 }}"
+                    alt="{{ article.image.alt }}"
+                    width="270"
+                    height="270">
                 {% endif %}
               </div>
               <div class="c_featured-blog__item-info">
-                <h3 class="c_featured__item-title">{{ article.title }}</h3>
+                <h3 class="c_featured-blog__item-title">{{ article.title }}</h3>
 
                 {% if section.settings.date_show %}
                   <span class="c_featured-blog__item-date">{{ article.published_at | date: '%Y, %m, %d' }}</span>
@@ -41,25 +45,25 @@
 
                 {% if article.metafields.custom.address != blank %}
                   <div class="c_featured-blog__shop-info">
-                    {{ article.metafields.custom.address |  newline_to_br }}
+                    {{ article.metafields.custom.address | newline_to_br }}
                   </div>
                 {% endif %}
               </div>
             </a>
-            </li>
-          {% endfor %}
+          </li>
+        {% endfor %}
       </ul>
 
       {% if section.settings.limit < section.settings.blog.articles_count %}
-        <div class="c_blog__button c_featured__button">
+        <div class="c_blog__button c_featured-blog__button">
           <a href="{{ section.settings.blog.url }}
-          " class="c_blog__button-link c_featured__button-link">
+          " class="c_blog__button-link c_featured-blog__button-link">
             {{ section.settings.button_text }}
             {{ 'c_icon-arrow.svg' | inline_asset_content }}
           </a>
         </div>
       {% endif %}
-      </div>
+    </div>
   </div>
 </div>
 
@@ -82,7 +86,7 @@
       {
         "type": "blog",
         "id": "blog",
-        "label": "ブログ",
+        "label": "ブログ"
       },
       {
         "type": "range",
@@ -92,19 +96,17 @@
         "max": 10,
         "step": 1,
         "default": 3
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "date_show",
         "label": "日付を表示する",
         "default": false
-      },
-      {
+      }, {
         "type": "text",
         "id": "button_text",
         "label": "ボタンのテキスト",
         "default": "全てを見る"
-      },{
+      }, {
         "type": "header",
         "content": "デスクトップ"
       }, {
