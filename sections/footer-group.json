@@ -13,19 +13,56 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "newsletter_DajFiC": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_heading": "ニュースレターに登録する",
+            "btn_text": "お問い合わせフォームはこちら",
+            "url": "shopify://pages/contact"
+          }
+        },
+        "link_list_x6jnUn": {
+          "type": "link_list",
+          "settings": {
+            "heading": "PRODUCT",
+            "menu": "footer"
+          }
+        },
+        "link_list_qLMDL4": {
+          "type": "link_list",
+          "settings": {
+            "heading": "GUIDE",
+            "menu": "guide"
+          }
+        },
+        "link_list_fcNVxV": {
+          "type": "link_list",
+          "settings": {
+            "heading": "POLICY",
+            "menu": "policy"
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_DajFiC",
+        "link_list_x6jnUn",
+        "link_list_qLMDL4",
+        "link_list_fcNVxV"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "color_scheme": "scheme-2",
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     }
   },
