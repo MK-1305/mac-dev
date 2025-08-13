@@ -1,0 +1,140 @@
+{{ 'c_product-point.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_sp }}px;
+    padding-bottom: {{ section.settings.padding_bottom_sp }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding page-width">
+  <div class="c_product-point color-{{ section.settings.color_scheme }}" style="background-color: rgb(var(--color-background), .85);">
+    <div class="c_product-point__inner">
+      <h2 class="c_product-point__title">
+        <svg
+          width="10"
+          height="11"
+          viewBox="0 0 10 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.93031 5.36469C8.55031 4.30469 5.07031 0.404688 5.00031 0.304688C4.95031 0.404688 1.68031 4.04469 0.0703125 5.36469C1.58031 6.59469 4.71031 10.0447 5.00031 10.6947C5.29031 10.0447 8.43031 6.52469 9.93031 5.36469Z" fill="#FFFBF7" />
+        </svg>
+        {{ section.settings.title }}
+        <svg
+          width="10"
+          height="11"
+          viewBox="0 0 10 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.93031 5.36469C8.55031 4.30469 5.07031 0.404688 5.00031 0.304688C4.95031 0.404688 1.68031 4.04469 0.0703125 5.36469C1.58031 6.59469 4.71031 10.0447 5.00031 10.6947C5.29031 10.0447 8.43031 6.52469 9.93031 5.36469Z" fill="#FFFBF7" />
+        </svg>
+      </h2>
+      <ul class="c_product-point__list">
+        {% for block in section.blocks %}
+          <li class="c_product-point__item">
+            <svg
+              width="24"
+              height="16"
+              viewBox="0 0 24 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.6332 15.7332C10.0749 15.7332 8.4441 15.3226 6.75084 14.5C6.56931 14.4121 6.4909 14.1864 6.57513 13.997C6.65935 13.8077 6.87578 13.7243 7.0573 13.8137C10.0401 15.262 12.8022 15.3544 15.2666 14.0879C18.5805 12.3851 21.1726 8.29027 22.4041 2.82589C17.4695 0.664066 12.7891 0.433798 9.52314 2.20325C7.10813 3.51064 5.55135 5.84667 4.89496 9.14621C4.85429 9.35073 4.66261 9.48252 4.46511 9.4401C4.26906 9.39768 4.14273 9.19771 4.18339 8.99168C4.88626 5.45733 6.56935 2.94707 9.18767 1.52909C12.7093 -0.378221 17.7324 -0.113102 22.969 2.25323C23.1288 2.32595 23.2174 2.50622 23.1796 2.68347C21.9278 8.52508 19.1614 12.929 15.5861 14.7666C14.3314 15.4105 13.0113 15.7332 11.6317 15.7332H11.6332Z" fill="#FFFBF7" />
+              <path d="M1.17522 15.1166C1.06921 15.1166 0.963174 15.0681 0.892016 14.9741C0.767127 14.8105 0.791834 14.5727 0.948672 14.4424C2.82201 12.8775 5.43017 11.2232 7.92796 10.0158C10.0322 8.99923 13.0542 7.81152 15.5128 7.93574C15.7132 7.94635 15.8671 8.1236 15.8584 8.33266C15.8497 8.53566 15.6885 8.69321 15.4954 8.69321C15.4895 8.69321 15.4837 8.69321 15.4779 8.69321C14.2043 8.62959 11.9128 8.925 8.23435 10.7035C5.78739 11.8867 3.23446 13.5047 1.40468 15.0332C1.33788 15.0893 1.258 15.1166 1.17813 15.1166H1.17522Z" fill="#FFFBF7" />
+              <path d="M11.6982 9.29016C11.582 9.29016 11.4687 9.23259 11.3975 9.12503C11.2843 8.95233 11.3264 8.716 11.492 8.59935C12.9224 7.5798 13.4655 5.07711 13.4713 5.05136C13.5149 4.84684 13.708 4.71807 13.9041 4.76352C14.1001 4.80897 14.2235 5.01045 14.18 5.21497C14.1553 5.3301 13.5657 8.03883 11.9015 9.22502C11.839 9.26896 11.7679 9.29167 11.6967 9.29167L11.6982 9.29016Z" fill="#FFFBF7" />
+            </svg>
+            {{ block.settings.title }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "カスタム:おすすめポイント",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "見出し",
+        "default": "見出し"
+      },
+      {
+        "type": "header",
+        "content": "デスクトップ"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "上部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "下部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "モバイル"
+      }, {
+        "type": "range",
+        "id": "padding_top_sp",
+        "label": "上部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_bottom_sp",
+        "label": "下部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "point",
+        "name": "ポイント",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "テキスト"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "カスタム:おすすめポイント"
+      }
+    ]
+  }
+{% endschema %}
