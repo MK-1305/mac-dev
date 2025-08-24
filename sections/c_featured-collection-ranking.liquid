@@ -29,7 +29,7 @@
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top_sp }}px;
-    padding-bottom: {{ section.settings.padding_bottom_sp }}px ;
+    padding-bottom: {{ section.settings.padding_bottom_sp }}px;
   }
 
   @media screen and (min-width: 750px) {
@@ -42,16 +42,50 @@
   #shopify-section-{{ section.id }} {
     overflow: hidden;
   }
-  
-  #shopify-section-{{ section.id }} .splide__track {
+
+  #shopify-section-{{ section.id }}
+  .splide__track {
     overflow: visible;
   }
+
+  /* バッジを配置コンテナにする（子absoluteの基準） */
+  #shopify-section-{{ section.id }} .card__badge {
+    position: relative;
+  }
+
+  /* 数字を“左上”に固定（中央寄せをリセット） */
+  #shopify-section-{{ section.id }} .card__badge .c_card__ranking-number {
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    display: block;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    z-index: 1;
+    pointer-events: none;
+    font-size: 26px;
+  }
+
+  /* SP向け微調整 */
+  @media (max-width: 990px) {
+    #shopify-section-{{ section.id }} .card__badge .c_card__ranking-number {
+      top: 13px;
+      left: 15px;
+      font-size: 18px;
+    }
+  }
+
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
   <div class="c_featured-collection page-width">
     <div class="c_section-head c_featured-collection__head">
-      {% render 'c_section-title', title: section.settings.title, title_sub: section.settings.title_sub %}
+      {% render 'c_section-title'
+        , title: section.settings.title
+        , title_sub: section.settings.title_sub %}
     </div>
 
     <nav class="c_tabs-nav c_featured-collection__nav">
@@ -59,10 +93,7 @@
         {% for block in section.blocks %}
           {% if block.settings.title_sub != blank %}
             <li class="c_tab-item">
-              <button
-                data-tab="tab-{{block.id}}"
-                class="c_tab-button {% if forloop.first %}is-active{% endif %}"
-              >
+              <button data-tab="tab-{{block.id}}" class="c_tab-button {% if forloop.first %}is-active{% endif %}">
                 <span class="c_tab-title">{{ block.settings.title_sub }}</span>
                 {% if block.settings.title_sub != blank %}
                   <span class="c_tab-subtitle">{{ block.settings.title }}</span>
@@ -79,18 +110,18 @@
         <ul data-tab="tab-{{block.id}}" class="c_tab-panel c_featured-collection__list {% if forloop.first %}is-active{% endif %}">
           {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
             <li class="c_featured-collection__item">
-              {% render 'c_card-product',
-                card_product: product,
-                media_aspect_ratio: section.settings.image_ratio,
-                image_shape: section.settings.image_shape,
-                show_secondary_image: section.settings.show_secondary_image,
-                show_vendor: section.settings.show_vendor,
-                show_rating: section.settings.show_rating,
-                skip_styles: skip_card_product_styles,
-                section_id: section.id,
-                quick_add: section.settings.quick_add,
-                ranking: section.settings.ranking,
-                index: forloop.index
+              {% render 'c_card-product'
+                , card_product: product
+                , media_aspect_ratio: section.settings.image_ratio
+                , image_shape: section.settings.image_shape
+                , show_secondary_image: section.settings.show_secondary_image
+                , show_vendor: section.settings.show_vendor
+                , show_rating: section.settings.show_rating
+                , skip_styles: skip_card_product_styles
+                , section_id: section.id
+                , quick_add: section.settings.quick_add
+                , ranking: section.settings.ranking
+                , index: forloop.index
               %}
             </li>
             {%- assign skip_card_product_styles = true -%}
@@ -123,224 +154,200 @@
 </script>
 
 {% schema %}
-{
-  "name": "カスタム:特集コレクション（ランキング）",
-  "max_blocks": 3,
-  "settings": [
-    {
-      "type": "text",
-      "id": "title_sub",
-      "label": "サブ見出し",
-      "default": "サブ見出し"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "見出し",
-      "default": "見出し"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "min": 2,
-      "max": 25,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.featured-collection.settings.products_to_show.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.featured-collection.settings.header.content"
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.featured-collection.settings.image_ratio.label"
-    },
-    {
-      "type": "select",
-      "id": "image_shape",
-      "options": [
-        {
-          "value": "default",
-          "label": "t:sections.all.image_shape.options__1.label"
-        },
-        {
-          "value": "arch",
-          "label": "t:sections.all.image_shape.options__2.label"
-        },
-        {
-          "value": "blob",
-          "label": "t:sections.all.image_shape.options__3.label"
-        },
-        {
-          "value": "chevronleft",
-          "label": "t:sections.all.image_shape.options__4.label"
-        },
-        {
-          "value": "chevronright",
-          "label": "t:sections.all.image_shape.options__5.label"
-        },
-        {
-          "value": "diamond",
-          "label": "t:sections.all.image_shape.options__6.label"
-        },
-        {
-          "value": "parallelogram",
-          "label": "t:sections.all.image_shape.options__7.label"
-        },
-        {
-          "value": "round",
-          "label": "t:sections.all.image_shape.options__8.label"
-        }
-      ],
-      "default": "default",
-      "label": "t:sections.all.image_shape.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_secondary_image",
-      "default": false,
-      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.featured-collection.settings.show_vendor.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": false,
-      "label": "t:sections.featured-collection.settings.show_rating.label",
-      "info": "t:sections.featured-collection.settings.show_rating.info"
-    },
-    {
-      "type": "select",
-      "id": "quick_add",
-      "default": "none",
-      "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
-      "options": [
-        {
-          "value": "none",
-          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
-        },
-        {
-          "value": "standard",
-          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
-        },
-        {
-          "value": "bulk",
-          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "ranking",
-      "label": "ランキング",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "デスクトップ"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "上部の余白",
-      "unit": "px",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "下部の余白",
-      "unit": "px",
-      "min": 0,
-      "max": 200,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "モバイル"
-    },
-    {
-      "type": "range",
-      "id": "padding_top_sp",
-      "label": "上部の余白",
-      "unit": "px",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_sp",
-      "label": "下部の余白",
-      "unit": "px",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    }
-  ],
-  "blocks" : [
-    {
-      "type": "collection",
-      "name": "コレクション",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title_sub",
-          "label": "サブ見出し",
-          "default": "サブ見出し"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "見出し",
-          "default": "見出し"
-        },
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "t:sections.featured-collection.settings.collection.label"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name":"カスタム:特集コレクション（ランキング）"
-    }
-  ]
-}
+  {
+    "name": "カスタム:特集コレクション（ランキング）",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_sub",
+        "label": "サブ見出し",
+        "default": "サブ見出し"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "見出し",
+        "default": "見出し"
+      },
+      {
+        "type": "range",
+        "id": "products_to_show",
+        "min": 2,
+        "max": 25,
+        "step": 1,
+        "default": 4,
+        "label": "t:sections.featured-collection.settings.products_to_show.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.featured-collection.settings.header.content"
+      }, {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+          }, {
+            "value": "portrait",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+          }, {
+            "value": "square",
+            "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+          }
+        ],
+        "default": "adapt",
+        "label": "t:sections.featured-collection.settings.image_ratio.label"
+      }, {
+        "type": "select",
+        "id": "image_shape",
+        "options": [
+          {
+            "value": "default",
+            "label": "t:sections.all.image_shape.options__1.label"
+          },
+          {
+            "value": "arch",
+            "label": "t:sections.all.image_shape.options__2.label"
+          },
+          {
+            "value": "blob",
+            "label": "t:sections.all.image_shape.options__3.label"
+          },
+          {
+            "value": "chevronleft",
+            "label": "t:sections.all.image_shape.options__4.label"
+          }, {
+            "value": "chevronright",
+            "label": "t:sections.all.image_shape.options__5.label"
+          }, {
+            "value": "diamond",
+            "label": "t:sections.all.image_shape.options__6.label"
+          }, {
+            "value": "parallelogram",
+            "label": "t:sections.all.image_shape.options__7.label"
+          }, {
+            "value": "round",
+            "label": "t:sections.all.image_shape.options__8.label"
+          }
+        ],
+        "default": "default",
+        "label": "t:sections.all.image_shape.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.show_vendor.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_rating",
+        "default": false,
+        "label": "t:sections.featured-collection.settings.show_rating.label",
+        "info": "t:sections.featured-collection.settings.show_rating.info"
+      }, {
+        "type": "select",
+        "id": "quick_add",
+        "default": "none",
+        "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
+          }, {
+            "value": "standard",
+            "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
+          }, {
+            "value": "bulk",
+            "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
+          }
+        ]
+      }, {
+        "type": "checkbox",
+        "id": "ranking",
+        "label": "ランキング",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "デスクトップ"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "上部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "下部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 200,
+        "step": 2,
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "モバイル"
+      }, {
+        "type": "range",
+        "id": "padding_top_sp",
+        "label": "上部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_bottom_sp",
+        "label": "下部の余白",
+        "unit": "px",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "コレクション",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_sub",
+            "label": "サブ見出し",
+            "default": "サブ見出し"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "見出し",
+            "default": "見出し"
+          }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "t:sections.featured-collection.settings.collection.label"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "カスタム:特集コレクション（ランキング）"
+      }
+    ]
+  }
 {% endschema %}

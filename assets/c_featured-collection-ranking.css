@@ -123,23 +123,45 @@
   padding: 0;
   list-style: none;
 }
+/* アクティブの時に表示する */
 .c_featured-collection__list.is-active {
   display: grid;
 }
+/* 1) 2カラムを “内容に負けない” minmax(0, 1fr) に */
 @media screen and (max-width: 750px) {
   .c_featured-collection__list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* ← 重要 */
     column-gap: 24px;
     row-gap: 64px;
+    box-sizing: border-box; /* パディング計算の安定化（保険） */
   }
 }
+
+/* 2) グリッド直下のアイテムは “縮められる” ように最小幅0 */
+.c_featured-collection__item {
+  min-width: 0;      /* ← 重要 */
+}
+
+/* 3) カード本体や内包要素にも “はみ出さない” 指示 */
+.c_featured-collection__item > * {
+  min-width: 0;      /* 画像・テキストラッパが横に張らないように */
+  max-width: 100%;
+}
+.c_featured-collection__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 
 /* ==================================================
   ランキングNo.
 ===================================================*/
+/* 親は相対＋センタリング用のグリッド(またはflex)に */
 .c_card__ranking {
-  display: block;
   position: relative;
+  display: grid;          /* ← gridで中央寄せに */
+  place-items: center;    /* ← 完全中央 */
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -152,24 +174,18 @@
   }
 }
 
-.c_card__ranking svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
+/* 数字は“面全体を覆う絶対配置＋中央寄せ”に */
 .c_card__ranking-number {
-  position: absolute;
-  top: 11%;
-  left: 10.6%;
-  transform: translate(-50%, -50%);
+  position: absolute;             /* top/right/bottom/left:0 の短縮 */
+  display: grid;
+  place-items: center;    /* ← 常に中央 */
   font-family: var(--font-bodoniModa-family);
   color: #9C9792;
   font-size: 26px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 100%;
+  line-height: 1;
   letter-spacing: 1.04px;
+  pointer-events: none;   /* クリック透過（必要なら） */
 }
 @media screen and (max-width: 990px) {
   .c_card__ranking-number {
