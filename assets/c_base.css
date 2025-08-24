@@ -171,6 +171,10 @@ body {
   text-decoration: none!important;
 }
 @media screen and (max-width: 750px) {
+  .c_card-wrapper {
+    width: 189px;
+    height: 322px;
+  }
   .c_card-wrapper .card__heading {
     font-size: 14px;
     letter-spacing: 0.56px;
