@@ -21,6 +21,41 @@
   .splide__track {
     overflow: visible;
   }
+
+  @media (max-width: 750px) {
+    /* 1) page-width の 20px を消す */
+    #shopify-section-{{ section.id }} .c_pick-up.page-width {
+      padding-inline: 0 !important;
+    }
+
+    /* 2) スライダーを画面端まで広げる（フルブリード） */
+    #shopify-section-{{ section.id }} .c_pick-up__content {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+
+    /* 3) Splide内側の余白を完全にゼロに */
+    #shopify-section-{{ section.id }} .splide__track {
+      padding: 0 !important;
+    }
+    #shopify-section-{{ section.id }}
+    .splide__list {
+      margin: 0 !important;
+    }
+    #shopify-section-{{ section.id }}
+    .splide__slide {
+      padding: 0 !important;
+    }
+
+    /* （保険）画像まわりの隙間を消す */
+    #shopify-section-{{ section.id }} .splide__slide .c_image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
@@ -74,20 +109,24 @@
 
     const splideOptions = {
       type: 'loop',
-      rewind: true,
-      gap: {{settings.spacing_grid_horizontal}},
+      gap: {{ settings.spacing_grid_horizontal }},
       perMove: 1,
       focus: 'center',
-      omitEnd: true,
       fixedWidth: 580,
       autoplay: false,
+      // omitEnd は loop では無視されるので消してOK
       breakpoints: {
         750: {
-          fixedWidth: '100%',
+          // モバイルは端まで
+          fixedWidth: '100vw',   // 100% では親の padding の影響を受ける。vw を使う。
+          focus: 0,              // センターやめる（余白の元凶になりがち）
           gap: 0,
+          padding: 0,
+          arrows: false          // お好み。矢印の分の見た目ズレ防止
         }
       }
-    };
+      };
+
 
     var splide = new Splide( '.splide-{{section.id}}', splideOptions );
 
