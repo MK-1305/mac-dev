@@ -13,6 +13,20 @@
     }
   }
 
+  #shopify-section-{{ section.id }}
+  .c_pick-up__head {
+    padding-inline: 20px;
+    /* デスクトップ */
+  }
+
+  @media (max-width: 750px) {
+    #shopify-section-{{ section.id }} .c_pick-up__head {
+      padding-inline: 20px;
+      /* モバイル */
+    }
+  }
+
+
   #shopify-section-{{ section.id }} {
     overflow: hidden;
   }
@@ -59,12 +73,12 @@
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="c_section-head c_pick-up__head">
+    {% render 'c_section-title'
+      , title: section.settings.title
+      , title_sub: section.settings.title_sub %}
+  </div>
   <div class="c_pick-up page-width">
-    <div class="c_section-head c_pick-up__head">
-      {% render 'c_section-title'
-        , title: section.settings.title
-        , title_sub: section.settings.title_sub %}
-    </div>
 
     <div class="splide c_splide c_pick-up__content splide-{{section.id}}">
       <div class="splide__track">
@@ -118,7 +132,7 @@
       breakpoints: {
         750: {
           // モバイルは端まで
-          fixedWidth: '100vw',   // 100% では親の padding の影響を受ける。vw を使う。
+          fixedWidth: '100%',   // 100% では親の padding の影響を受ける。vw を使う。
           focus: 0,              // センターやめる（余白の元凶になりがち）
           gap: 0,
           padding: 0,
