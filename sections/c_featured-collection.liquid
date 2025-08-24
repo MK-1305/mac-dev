@@ -46,6 +46,7 @@
   .splide__track {
     overflow: visible;
   }
+
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
@@ -104,8 +105,8 @@
       pagination: false,
       breakpoints: {
         750: {
-          fixedWidth: '189%',
           gap: 24,
+          autoWidth: true,
         }
       }
     };
