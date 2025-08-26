@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "c_concept_n7iRmM": {
+      "type": "c_concept",
+      "name": "カスタム:コンセプト",
+      "settings": {
+        "title_sub": "ショッピングガイド",
+        "title": "配送料",
+        "textarea-1": "配送料金\n全国一律 ¥660（税込） でお届けします。\n北海道・沖縄・離島は ¥1,320（税込） を頂戴します。\n\n送料無料ライン\n1回のご注文金額が ¥10,000（税込）以上 の場合、送料無料 となります。\n※北海道・沖縄・離島は ¥660割引（差額のみご負担）となります。\n\n配送業者\nヤマト運輸／佐川急便のいずれかでお届けします（配送業者のご指定は承っておりません）。\n\nお届け日数の目安\nご注文（またはご入金）確認後、1～3営業日以内に出荷いたします。\n到着は本州：出荷後1～2日／北海道・九州・沖縄・離島：2～5日が目安です。\n※繁忙期や天候・交通状況により前後する場合があります。\n\n日時指定\n配送日時のご指定を承ります（カート内でお選びください）。一部地域ではご希望に添えない場合がございます。\n\n同梱・分割発送\n複数商品をご注文の場合、在庫状況により同梱または分割発送となることがあります。分割発送の場合の追加送料は当店負担です。\n\n長期不在・住所不備\n長期不在やお届け先の不備により返品となった場合、再発送時の送料はお客様負担となります。ご住所にお間違いがないかご確認ください。\n\n海外配送\n現在、海外への発送は対応しておりません。（対応開始の際は本ページにてご案内します）",
+        "textarea-2": "",
+        "textarea-3": "※送料や条件は予告なく変更する場合があります。最新情報は本ページをご確認ください。",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "padding_top_sp": 64,
+        "padding_bottom_sp": 64,
+        "color_scheme": "scheme-ba529579-9733-4844-bb3b-564a36d71821"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c_concept_n7iRmM"
+  ]
+}

@@ -78,6 +78,16 @@
     }
   }
 
+  #shopify-section-{{ section.id }}
+  .c_card-wrapper .card__heading {
+    background: none;
+  }
+
+  #shopify-section-{{ section.id }}
+  .c_card__label-list {
+    background: none;
+  }
+
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
@@ -152,6 +162,7 @@
     });
   });
 </script>
+
 
 {% schema %}
   {
