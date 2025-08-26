@@ -132,6 +132,52 @@
                     {{ form | payment_terms }}
                   {%- endform -%}
                 </div>
+                {%- when 'noshi' -%}
+                  <div class="product__noshi" id="Noshi-{{ section.id }}" {{ block.shopify_attributes }}>
+                    {%- if block.settings.heading != blank -%}
+                      <h3 class="product__block-title">{{ block.settings.heading }}</h3>
+                    {%- endif -%}
+  
+                    <!-- 熨斗の種類：プルダウン（line item properties） -->
+                    <div class="product__field">
+                      <label for="noshi-select-{{ section.id }}">{{ block.settings.noshi_label }}</label>
+                      <select id="noshi-select-{{ section.id }}" name="properties[熨斗]" form="{{ product_form_id }}">
+                        <option value="">{{ block.settings.none_label }}</option>
+                        {% for i in (1..11) %}
+                          {% assign label_key = 'option_' | append: i | append: '_label' %}
+                          {% assign image_key = 'option_' | append: i | append: '_image' %}
+                          {% assign olabel = block.settings[label_key] %}
+                          {% assign oimage = block.settings[image_key] %}
+                          {% if olabel != blank %}
+                            <option
+                              value="{{ olabel | escape }}"
+                              {% if oimage %}data-image="{{ oimage | image_url: width: 1200 }}"{% endif %}
+                            >
+                              {{ olabel | escape }}
+                            </option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                    </div>
+  
+                    <!-- 選択した熨斗のプレビュー -->
+                    <div class="product__field product__noshi-image" aria-live="polite">
+                      <img id="noshi-preview-{{ section.id }}" src="" alt="" hidden>
+                    </div>
+  
+                    <!-- 名入れ入力（任意） -->
+                    <div class="product__field">
+                      <label for="noshi-name-{{ section.id }}">{{ block.settings.name_label }}</label>
+                      <input
+                        type="text"
+                        id="noshi-name-{{ section.id }}"
+                        name="properties[名入れ]"
+                        placeholder="{{ block.settings.name_placeholder }}"
+                        form="{{ product_form_id }}"
+                        inputmode="text"
+                      >
+                    </div>
+                  </div>
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -219,6 +265,8 @@
                     </div>
                   </details>
                 </div>
+
+
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -929,6 +977,33 @@
   </div>
 </product-info>
 
+<script>
+(() => {
+  const root = document.getElementById('Noshi-{{ section.id }}');
+  if (!root) return;
+
+  const select = root.querySelector('#noshi-select-{{ section.id }}');
+  const img = root.querySelector('#noshi-preview-{{ section.id }}');
+
+  const update = () => {
+    const opt = select.options[select.selectedIndex];
+    const url = opt && opt.getAttribute('data-image');
+    if (url) {
+      img.src = url;
+      img.alt = (opt.text || '') + ' のイメージ';
+      img.removeAttribute('hidden');
+    } else {
+      img.setAttribute('hidden', 'hidden');
+      img.removeAttribute('src');
+      img.removeAttribute('alt');
+    }
+  };
+
+  select.addEventListener('change', update);
+  update(); // 初期表示
+})();
+</script>
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",
@@ -968,6 +1043,76 @@
           "default": "body",
           "label": "t:sections.main-product.blocks.text.settings.text_style.label"
         }
+      ]
+    },
+    {
+      "type": "noshi",
+      "name": "熨斗 / 名入れ",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "見出し", "default": "熨斗・名入れ" },
+
+        { "type": "text", "id": "noshi_label", "label": "熨斗プルダウンのラベル", "default": "熨斗の種類" },
+        { "type": "text", "id": "none_label", "label": "未選択（なし）の表示", "default": "選択しない" },
+
+        { "type": "header", "content": "選択肢1" },
+        { "type": "text", "id": "option_1_label", "label": "ラベル（例：紅白・蝶結び）" },
+        { "type": "image_picker", "id": "option_1_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢2" },
+        { "type": "text", "id": "option_2_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_2_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢3" },
+        { "type": "text", "id": "option_3_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_3_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢4" },
+        { "type": "text", "id": "option_4_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_4_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢5" },
+        { "type": "text", "id": "option_5_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_5_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢6" },
+        { "type": "text", "id": "option_6_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_6_image", "label": "プレビュー画像" },
+        
+        { "type": "header", "content": "選択肢7" },
+        { "type": "text", "id": "option_7_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_7_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢8" },
+        { "type": "text", "id": "option_8_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_8_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢9" },
+        { "type": "text", "id": "option_9_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_9_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢10" },
+        { "type": "text", "id": "option_10_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_10_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢11" },
+        { "type": "text", "id": "option_11_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_11_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢12" },
+        { "type": "text", "id": "option_12_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_12_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢13" },
+        { "type": "text", "id": "option_13_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_13_image", "label": "プレビュー画像" },
+
+        { "type": "header", "content": "選択肢14" },
+        { "type": "text", "id": "option_14_label", "label": "ラベル" },
+        { "type": "image_picker", "id": "option_14_image", "label": "プレビュー画像" },
+        
+        { "type": "text", "id": "name_label", "label": "名入れラベル", "default": "名入れ（任意）" },
+        { "type": "text", "id": "name_placeholder", "label": "名入れプレースホルダー", "default": "例）山田 太郎" }
       ]
     },
     {

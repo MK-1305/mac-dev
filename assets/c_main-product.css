@@ -348,3 +348,89 @@
 .c_quantity-selector-container .product-form__submit circle {
   stroke: #FFFBF7;
 }
+
+/* 熨斗 */
+/* ==================================================
+  熨斗（縦並びレイアウト）
+===================================================*/
+.product__noshi {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr;   /* 常に1カラム */
+  grid-auto-flow: row;
+  row-gap: 16px;
+}
+@media screen and (max-width: 749px) {
+  .product__noshi { margin-top: 40px; }
+}
+
+/* タイトル */
+.product__noshi .product__block-title {
+  color: #282315;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  margin: 0 0 8px;
+}
+
+/* フィールド共通 */
+.product__noshi .product__field {
+  display: grid;
+  row-gap: 8px;
+}
+.product__noshi label {
+  color: #4C4227;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+/* セレクト＆テキスト入力 */
+.product__noshi select,
+.product__noshi input[type="text"] {
+  width: 50%;
+  height: 48px;
+  box-sizing: border-box;
+  border: 0.6px solid #A38B51;
+  background: #FFF;
+  color: #282315;
+  font-size: 16px;
+  line-height: 100%;
+  padding: 14px 12px;
+  outline: none;
+}
+.product__noshi select:focus,
+.product__noshi input[type="text"]:focus {
+  border-color: #E09B24;
+  box-shadow: 0 0 0 1.4px #E09B24;
+}
+
+/* プレビュー（下に表示） */
+.product__noshi .product__noshi-image {
+  align-self: start;
+}
+.product__noshi .product__noshi-image img {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  background: #FFFBF7;
+  border: 0.6px solid #A38B51;
+  box-shadow: 0 0 10px rgba(163,139,81,0.2);
+  padding: 8px;
+}
+.product__noshi .product__noshi-image img[hidden] { display: none; }
+
+/* 下の購入エリアとの間隔は既存と合わせる */
+.c_quantity-selector-container { margin-top: 64px !important; }
+@media screen and (max-width: 749px) {
+  .c_quantity-selector-container { margin-top: 48px !important; }
+}
+
+/* もし以前の“横並び”指定が残っている場合の保険（強制1カラム） */
+@media screen and (min-width: 990px) {
+  .product__noshi {
+    grid-template-columns: 1fr !important;
+    grid-template-areas: none !important;
+  }
+}

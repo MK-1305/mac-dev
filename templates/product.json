@@ -33,6 +33,41 @@
             "richtext": "<p><a href=\"/pages/contact\" title=\"Contact\">配送料</a>は購入手続き時に計算されます。</p>"
           }
         },
+        "noshi_aCRMjE": {
+          "type": "noshi",
+          "settings": {
+            "heading": "熨斗・名入れ",
+            "noshi_label": "熨斗の種類",
+            "none_label": "熨斗なし",
+            "option_1_label": "﻿内祝（蝶結び）",
+            "option_1_image": "shopify://shop_images/20dff0f8b9a78b98e9d6eccccf71e16f_2a7cc90a-325b-483f-80c9-4255dd759579.png",
+            "option_2_label": "﻿内祝（結び切り）",
+            "option_2_image": "shopify://shop_images/3629bf0bf14a05262aa51e82d2061c67_e2b9240b-7c9d-4cc2-95dd-d1bfa8618178.png",
+            "option_3_label": "御礼（蝶結び）",
+            "option_3_image": "shopify://shop_images/7e21cfe93d5f13aabade803066b14a21_66512e67-d4ae-47f8-8a1b-0405cd070eac.png",
+            "option_4_label": "御祝（蝶結び）",
+            "option_4_image": "shopify://shop_images/3c39a2974824709986cfe4916a23a832_8d689867-141d-44a7-bb6f-b2962877206b.png",
+            "option_5_label": "御出産御祝（蝶結び）",
+            "option_5_image": "shopify://shop_images/3f3a8eb526c97dee5991fcf900005f67_2181d3fe-0708-4b72-a1eb-af3f8985999e.png",
+            "option_6_label": "出産内祝（蝶結び）",
+            "option_6_image": "shopify://shop_images/a946965289be411f0024b18ea5c298a2_33edd02a-75c4-41d8-8204-080cd0220497.png",
+            "option_7_label": "感謝（蝶結び）",
+            "option_7_image": "shopify://shop_images/c809fb8babf7061237e6b0bcfad17507_1928ee0a-70bd-4b35-9c74-ce2ec388c473.png",
+            "option_8_label": "御結婚御祝（結び切り）",
+            "option_8_image": "shopify://shop_images/d9d1e35b646cbc437686ce2f665c99d9_857cefa7-c910-4bdb-9a74-ae9132cb0e24.png",
+            "option_9_label": "結婚内祝（結び切り）",
+            "option_9_image": "shopify://shop_images/a4b1ec9dd98f9c857088c42bc13b3684_9938ccef-f14b-4892-abe2-14a66edbf8de.png",
+            "option_10_label": "御見舞（結び切り）",
+            "option_10_image": "shopify://shop_images/4a9a08c8c821776ae77d516925a7d8a4_0b55547c-d316-4af4-9304-9b7c78a683f1.png",
+            "option_11_label": "快気祝（結び切り）",
+            "option_11_image": "shopify://shop_images/6839468062db9a21fcd3b631c561b400_3c6b923b-50dd-4ab2-94e3-a1df2b897dd5.png",
+            "option_12_label": "",
+            "option_13_label": "",
+            "option_14_label": "",
+            "name_label": "名入れ（任意）",
+            "name_placeholder": "例）山田 太郎"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -46,6 +81,7 @@
         "description",
         "variant_picker",
         "price",
+        "noshi_aCRMjE",
         "buy_buttons"
       ],
       "settings": {
