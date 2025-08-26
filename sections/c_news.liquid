@@ -28,7 +28,7 @@
           <li class="c_news__item">
             <a href="{{ article.url }}" class="c_news__item-link">
               <div class="c_news__item-info">
-                <span class="c_news__item-data">{{ article.published_at | date: '%Y.%m.%d' }}</span>
+                <span class="c_news__item-date">{{ article.published_at | date: '%Y.%m.%d' }}</span>
                 {% for tag in article.tags %}
                   {% if tag contains 'label_' %}
                     <span class="c_news__item-category">
@@ -39,7 +39,7 @@
                 {% endfor %}
               </div>
               <h3 class="c_news__item-title">{{ article.title }}</h3>
-              {{ 'c_icon-arrow-news.svg' | inline_asset_content }}
+              {{ 'c_icon-arrow.svg' | inline_asset_content }}
             </a>
             </li>
           {% endfor %}
@@ -48,7 +48,7 @@
         <a href="{{ section.settings.blog.url }}
         " class="c_blog__button-link c_news__button-link">
           {{ section.settings.button_text }}
-          {{ 'c_icon-arrow.svg' | inline_asset_content }}
+          {{ 'c_icon-arrow-news.svg' | inline_asset_content }}
         </a>
       </div>
       </div>
