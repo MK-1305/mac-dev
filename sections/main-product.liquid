@@ -133,6 +133,8 @@
                   {%- endform -%}
                 </div>
                 {%- when 'noshi' -%}
+                  {%- assign v = product.selected_or_first_available_variant -%}
+                  {%- if v.available -%}
                   <div class="product__noshi" id="Noshi-{{ section.id }}" {{ block.shopify_attributes }}>
                     {%- if block.settings.heading != blank -%}
                       <h3 class="product__block-title">{{ block.settings.heading }}</h3>
@@ -178,6 +180,14 @@
                       >
                     </div>
                   </div>
+                {%- endif -%}
+              {%- when 'restock_date' -%}
+                {%- assign v = product.selected_or_first_available_variant -%}
+                {%- if v.available == false and v.metafields.restock.date != blank -%}
+                  <p class="restock-date">
+                    再入荷予定：{{ v.metafields.restock.date | date: '%Y年%-m月%-d日' }}
+                  </p>
+                {%- endif -%}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -1114,6 +1124,11 @@
         { "type": "text", "id": "name_label", "label": "名入れラベル", "default": "名入れ（任意）" },
         { "type": "text", "id": "name_placeholder", "label": "名入れプレースホルダー", "default": "例）山田 太郎" }
       ]
+    },
+    {
+      "type": "restock_date",
+      "name": "再入荷予定",
+      "limit": 1
     },
     {
       "type": "title",
