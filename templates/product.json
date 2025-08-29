@@ -33,6 +33,10 @@
             "richtext": "<p><a href=\"/pages/contact\" title=\"Contact\">配送料</a>は購入手続き時に計算されます。</p>"
           }
         },
+        "restock_date_XVkydc": {
+          "type": "restock_date",
+          "settings": {}
+        },
         "noshi_aCRMjE": {
           "type": "noshi",
           "settings": {
@@ -81,6 +85,7 @@
         "description",
         "variant_picker",
         "price",
+        "restock_date_XVkydc",
         "noshi_aCRMjE",
         "buy_buttons"
       ],
